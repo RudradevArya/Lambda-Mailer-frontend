@@ -27,9 +27,9 @@ const EmailForm = () => {
 
   const handleCustomMessageChange = (event) => {
     setCustomMessage(event.target.value);
-    axios.get('http://localhost:3001/api/google-login', {
-    withCredentials: true,
-  });
+  //   axios.get('http://localhost:3001/api/google-login', {
+  //   withCredentials: true,
+  // });
   };
 
   const handleCustomSubjectChange = (event) => {
