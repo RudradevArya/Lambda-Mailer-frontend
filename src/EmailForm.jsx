@@ -8,15 +8,6 @@ const EmailForm = () => {
   const [customMessage, setCustomMessage] = useState("");
   const [customSubject, setCustomSubject] = useState("");
 
-  // const handleGoogleLoginSuccess = async (credentialResponse) => {
-  //   try {
-  //     const accessToken = credentialResponse.access_token;
-  //     await axios.post('http://localhost:3001/api/verify-email', { accessToken });
-  //     console.log('Email verification initiated');
-  //   } catch (error) {
-  //     console.error('Error verifying email:', error);
-  //   }
-  // };
   const handleGoogleLogin = () => {
     window.location.href = 'http://localhost:3001/api/google-login';
   };
@@ -63,8 +54,17 @@ const EmailForm = () => {
       <h2>Send Bulk Emails</h2>
       <form onSubmit={handleSubmit} className="email-form">
         <div className="form-group">
-          <label htmlFor="file-upload">Upload CSV File:</label>
-          <input type="file" id="file-upload" onChange={handleFileUpload} />
+          <label htmlFor="file-upload">
+            <span className="file-upload-icon">&#x1F4CE;</span>
+            <span className="file-upload-text">Upload CSV File</span>
+          </label>
+            
+          <input
+           type="file" 
+           id="file-upload" 
+           onChange={handleFileUpload}
+           className="file-upload-input"
+          />
         </div>
         <div className="form-group">
           <label htmlFor="custom-subject">Custom Subject:</label>
@@ -74,14 +74,18 @@ const EmailForm = () => {
               value={customSubject}
               onChange={handleCustomSubjectChange}
               placeholder="Enter custom subject. Use {{column_name}} for column placeholders."
+              className="custom-sub"
           />
-
+        </div>
+        <div className="form-group">
           <label htmlFor="custom-message">Custom Message:</label>
           <textarea
             id="custom-message"
             value={customMessage}
             onChange={handleCustomMessageChange}
             placeholder="Enter custom message, Use {{column_name}} for column placeholders."
+            // placeholder="Custom Message"
+            className="custom-mess custom-textarea"
           ></textarea>
         </div>
         <button type="submit" className="send-button">
@@ -94,7 +98,7 @@ const EmailForm = () => {
           console.log('Login Failed');
         }}
       /> */}
-      <button onClick={handleGoogleLogin}>Login with Google</button>
+      <button onClick={handleGoogleLogin} className="google-button">Login with Google</button>
     </div>
     
   );

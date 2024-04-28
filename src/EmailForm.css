@@ -1,51 +1,136 @@
-.email-form-container {
+
+  .file-upload-icon {
+    font-size: 22px;
+    margin-right: 10px;
+  }
+  
+
+  .custom-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+
+  .send-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font: 100;
+  }
+  
+ 
+
+   .email-form-container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 50px auto;
     padding: 20px;
-    background-color: #f5f5f5;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 500px;
+
+  }
+  
+  .email-form-title {
+    font-size: 30px;
+    margin-bottom: 20px;
   }
   
   .email-form {
     display: flex;
     flex-direction: column;
+    
   }
   
   .form-group {
     margin-bottom: 20px;
+    
   }
   
-  label {
+  .label {
     font-weight: bold;
-    margin-bottom: 5px;
   }
   
-  input[type="file"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+  .file-upload-label {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e40d54;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
   }
   
-  textarea {
-    width: 100%;
-    height: 150px;
+  .file-upload-input {
+    display:none;
+  }
+  
+  .custom-sub,
+  .custom-textarea {
+    width: 96%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    resize: vertical;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize:vertical;
+    height: 40%;
+  }
+
+  .custom-mess,
+  .custom-textarea {
+    width: 96%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize:vertical;
+    height: 190%;
   }
   
   .send-button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #ffc917;
+    color: rgb(28, 2, 2);
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    position:absolute;
+    bottom: 37%; 
+    /* left: ; */
+    width: 600px;
   }
   
   .send-button:hover {
-    background-color: #0056b3;
+    background-color: #f50c3380;
+  }
+  .google-button {
+    /* display: block; */
+    width: 10%;
+    padding: 10px;
+    font-size: 20px;
+    /* background-color: #fff; */
+    background-color: #ffc917;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 60px;
+    border-radius: 7px;
+
+    position: absolute;
+    top: 20px; 
+    right: 20px;
+  }
+
+  .google-button:hover {
+    background-color: #f50c3380;
+  }
+
+  .custom-message
+  {
+    font: 100;
   }

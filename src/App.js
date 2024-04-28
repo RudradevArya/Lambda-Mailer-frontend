@@ -1,17 +1,23 @@
-import React from 'react';
+import React  from 'react';
+
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import EmailForm from './EmailForm';
 
-function App() {
-  return (
-    <div>
-      <h1>Lambda Mailer</h1>
-      <EmailForm />
+import './App.css';
 
-      <GoogleOAuthProvider clientId="647829566826-qtt6u1lf2de94l3a5k4lgpmuo2b2go3b.apps.googleusercontent.com">
+
+function App() {
+  
+
+  return (
+    <div className='Head'>
+      <h1>Lambda Mailer</h1>
+
+      <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         <EmailForm />
       </GoogleOAuthProvider>
     </div>
   );
 }
+
 export default App;
