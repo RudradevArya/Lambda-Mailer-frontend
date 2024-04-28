@@ -4,7 +4,8 @@ import './EmailForm.css'; // Import the CSS file
 
 const EmailForm = () => {
   const [file, setFile] = useState(null);
-  const [customMessage, setCustomMessage] = useState('');
+  const [customMessage, setCustomMessage] = useState("");
+  const [emailTemplate, setEmailTemplate] = useState("");
 
   const handleFileUpload = (event) => {
     setFile(event.target.files[0]);
@@ -14,21 +15,26 @@ const EmailForm = () => {
     setCustomMessage(event.target.value);
   };
 
+  // const handleEmailTemplateChange = (event) => {
+  //   setEmailTemplate(event.target.value);
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Create a FormData object to send the file and custom message
     const formData = new FormData();
-    formData.append('file', file);
-    formData.append('customMessage', customMessage);
+    formData.append("file", file);
+    formData.append("customMessage", customMessage);
+    formData.append('emailTemplate', emailTemplate);
 
     try {
       // Send the file and custom message to the back-end API
-      await axios.post('http://localhost:3001/api/send-emails', formData);
-      alert('Email sending task enqueued successfully!');
+      await axios.post("http://localhost:3001/api/send-emails", formData);
+      alert("Email sending task enqueued successfully!");
     } catch (error) {
-      console.error('Error:', error);
-      alert('Error enqueuing email sending task.');
+      console.error("Error:", error);
+      alert("Error enqueuing email sending task.");
     }
   };
 
@@ -40,6 +46,15 @@ const EmailForm = () => {
           <label htmlFor="file-upload">Upload CSV File:</label>
           <input type="file" id="file-upload" onChange={handleFileUpload} />
         </div>
+        {/* <div className="form-group">
+          <label htmlFor="email-template">Email Template:</label>
+          <textarea
+            id="email-template"
+            value={emailTemplate}
+            onChange={handleEmailTemplateChange}
+            placeholder="Enter email template"
+          ></textarea>
+        </div> */}
         <div className="form-group">
           <label htmlFor="custom-message">Custom Message:</label>
           <textarea
