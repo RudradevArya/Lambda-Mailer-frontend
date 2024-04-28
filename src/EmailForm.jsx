@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { GoogleLogin } from '@react-oauth/google';
 import './EmailForm.css'; // Import the CSS file
 
 const EmailForm = () => {
@@ -7,12 +8,28 @@ const EmailForm = () => {
   const [customMessage, setCustomMessage] = useState("");
   const [customSubject, setCustomSubject] = useState("");
 
+  // const handleGoogleLoginSuccess = async (credentialResponse) => {
+  //   try {
+  //     const accessToken = credentialResponse.access_token;
+  //     await axios.post('http://localhost:3001/api/verify-email', { accessToken });
+  //     console.log('Email verification initiated');
+  //   } catch (error) {
+  //     console.error('Error verifying email:', error);
+  //   }
+  // };
+  const handleGoogleLogin = () => {
+    window.location.href = 'http://localhost:3001/api/google-login';
+  };
+
   const handleFileUpload = (event) => {
     setFile(event.target.files[0]);
   };
 
   const handleCustomMessageChange = (event) => {
     setCustomMessage(event.target.value);
+    axios.get('http://localhost:3001/api/google-login', {
+    withCredentials: true,
+  });
   };
 
   const handleCustomSubjectChange = (event) => {
@@ -30,7 +47,9 @@ const EmailForm = () => {
 
     try {
       // Send the file and custom message to the back-end API
-      await axios.post("http://localhost:3001/api/send-emails", formData);
+      await axios.post("http://localhost:3001/api/send-emails", formData, {
+        withCredentials: true,
+      });
       alert("Email sending task enqueued successfully!");
     } catch (error) {
       console.error("Error:", error);
@@ -39,6 +58,7 @@ const EmailForm = () => {
   };
 
   return (
+    
     <div className="email-form-container">
       <h2>Send Bulk Emails</h2>
       <form onSubmit={handleSubmit} className="email-form">
@@ -68,7 +88,15 @@ const EmailForm = () => {
           Send Emails
         </button>
       </form>
+      {/* <GoogleLogin
+        onSuccess={handleGoogleLoginSuccess}
+        onError={() => {
+          console.log('Login Failed');
+        }}
+      /> */}
+      <button onClick={handleGoogleLogin}>Login with Google</button>
     </div>
+    
   );
 };
 
